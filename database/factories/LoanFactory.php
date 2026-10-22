@@ -27,7 +27,7 @@ class LoanFactory extends Factory
             'member' => fake()->name(),
             'email' => fake()->safeEmail(),
             'loan_date' => fake()->dateTimeBetween('-1 month', 'now'),
-            'return_date' => fake()->dateTimeBetween('now', '+2 month'),
+            'return_date' => fake()->optional()->dateTimeBetween('now', '+2 month'),//optional() para que tenga un 50% de ser null
         ];
     }
 }

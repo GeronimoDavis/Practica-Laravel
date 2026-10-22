@@ -21,7 +21,7 @@ class BookFactory extends Factory
         return [
             'title' => fake()->sentence(6),
             'author' => fake()->name(),
-            'public_year' => fake()->year(2026),
+            'publication_year' => fake()->year(2026),
             'front' => fake()->url(),
         ];
     }

@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,11 +14,25 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        /*Esto seria lo mas adecuado pero nos pieden tener sedders separados
+        $users = User::factory(10)->create();
+        $books = Book::factory(10)->create();
+
+        
+        Loan::factory(20)
+            ->recycle($users)
+            ->recycle($books)
+            ->create(); */
+
+        //llamamos a los sedders
+
+        $this->call([
+            UserSeeder::class,// Primero crea usuarios
+            BookSeeder::class,
+            LoanSeeder::class,//Finalmente crea préstamos enlazados
         ]);
+
+
     }
 }
